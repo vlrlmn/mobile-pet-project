@@ -8,14 +8,16 @@ struct AddHabitView: View {
 
     var body: some View {
         Form {
-            TextField("Название привычки", text: $title)
-            Stepper("Дней: \(totalDays)", value: $totalDays, in: 1...100)
+            TextField("Goal", text: $title)
+            Stepper("Days: \(totalDays)", value: $totalDays, in: 1...100)
 
-            Button("Сохранить") {
+            Button("Save") {
                 let newHabit = Habit(title: title, totalDays: totalDays)
                 viewModel.addHabit(newHabit)
                 dismiss()
             }
+            .disabled(!viewModel.canAddMoreHabits())
+
         }
         .navigationTitle("Новая привычка")
     }
