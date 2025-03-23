@@ -8,7 +8,7 @@ class HabitViewModel: ObservableObject {
 
     func addHabit(_ habit: Habit) {
         guard canAddMoreHabits() else {
-            print("Максимум привычек достигнут.")
+            print("Max 5 goals")
             return
         }
         habits.append(habit)
